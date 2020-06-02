@@ -54,6 +54,11 @@ public class UserImpl {
 		users.set(index, user);
 	}
 	
+	public boolean noDetailsModified(UsersBean user) {
+		
+		return false;
+		
+	}
 	public void deleteById(int id) {
 		for(Iterator<UsersBean> iterator=users.iterator(); iterator.hasNext(); ) {
 			UsersBean user= iterator.next();

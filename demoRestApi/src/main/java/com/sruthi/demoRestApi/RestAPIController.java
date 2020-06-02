@@ -73,7 +73,11 @@ public class RestAPIController {
 		if(currentUser==null)
 		{
 			logger.error("User with this id {} does not exist",id);
-			return new ResponseEntity(new ErrorType("Unable to find user with id"+id),HttpStatus.NOT_FOUND);
+			return new ResponseEntity(new ErrorType("No user with with this ID "+id),HttpStatus.NOT_FOUND);
+		}
+		if(userService.noDetailsModified(currentUser)){
+			logger.error("User details not modified ",id);
+			return new ResponseEntity(new ErrorType("User details not modified "+id),HttpStatus.NOT_FOUND);
 		}
 		currentUser.setName(user.getName());
 		currentUser.setAge(user.getAge());
